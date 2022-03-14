@@ -4,7 +4,12 @@ const mongoose=require('mongoose');
 const app=express();
 app.use(express.json());
 
-mongoose.connect("");
+mongoose.connect("mongodb://localhost:27017/bank",{
+    useNewParser:true,
+    useunifiedTopology:true,
+}).then(()=>{
+    console.log("connection ok")
+})
 mongoose.connection.on("error",err=>{
     console.log("connection error",err);
 });
